@@ -1,0 +1,21 @@
+
+version: '3'
+
+services:
+  hlds:
+    container_name: counter-strike_server
+    image: cs16ds/server
+    restart: always
+    environment:
+      - PORT=27015
+      - START_MAP=cs_italy
+      - MAXPLAYERS=32
+      - SV_LAN=0
+      - START_MONEY=800
+      - BUY_TIME=2
+    ports:
+      - 27015:27015/udp
+      - 27015:27015
+    volumes:
+      - ./files/server.cfg:/opt/hlds/cstrike/server.cfg
+      - ./files/mapcycle.txt:/opt/hlds/cstrike/mapcycle.txt
